@@ -1,0 +1,12 @@
+[core]
+	repositoryformatversion = 0
+	filemode = true
+	bare = false
+	worktree = /srv/loan-consultation
+	excludesFile = /srv/loan-consultation/.git-local/info/exclude
+[remote "origin"]
+	url = https://github.com/charile725/loan.git
+	fetch = +refs/heads/*:refs/remotes/origin/*
+[user]
+	name = charile725
+	email = 149287080+charile725@users.noreply.github.com
