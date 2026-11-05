@@ -1,1 +1,14 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630"><rect width="1200" height="630" fill="#fafaf6"/><rect x="60" y="60" width="1080" height="510" rx="24" fill="#eff3eb"/><g font-family="sans-serif" fill="#203d34"><text x="120" y="155" font-size="28">借貸諮詢</text><text x="120" y="285" font-size="68" font-weight="bold">先了解條件，</text><text x="120" y="380" font-size="68" font-weight="bold">再安心決定。</text><text x="120" y="480" font-size="26">條件透明 · 審慎規劃 · LINE 免費諮詢</text></g></svg>
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <rect width="1200" height="630" fill="#293236"/>
+  <circle cx="1120" cy="480" r="310" fill="none" stroke="#ba985b" stroke-opacity=".1" stroke-width="80"/>
+  <path d="M0 620h1200" stroke="#eb4b35" stroke-width="20"/>
+  <g transform="translate(82 65) scale(1.05)" fill="none" stroke="#ba985b" stroke-width="3"><path d="M24 3 44 14v23L24 49 4 37V14L24 3Z"/><path d="m13 28.5 8 7.5 15-18" stroke-width="3.5"/></g>
+  <g font-family="Microsoft JhengHei, PingFang TC, Noto Sans TC, sans-serif">
+    <text x="152" y="100" fill="#fff" font-size="31" font-weight="700" letter-spacing="4">借貸諮詢</text>
+    <text x="84" y="257" fill="#fff" font-size="69" font-weight="700">資金的難題，</text>
+    <text x="84" y="361" fill="#fff" font-size="69" font-weight="700">用<tspan fill="#ff7058">安心</tspan>找到解答。</text>
+    <path d="M86 419h54" stroke="#ba985b" stroke-width="3"/>
+    <text x="84" y="475" fill="#dadad4" font-size="25" letter-spacing="2">專業溝通・透明條件・用心諮詢</text>
+    <text x="84" y="553" fill="#c7ae80" font-size="12" letter-spacing="3">CLARITY · CONFIDENCE · CARE</text>
+  </g>
+</svg>
