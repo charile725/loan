@@ -63,7 +63,7 @@ LINE 按鈕位置包括 `hero`、`banner`、`sticky`、`footer`。頁首「立�
 
 ## 部署到 Vercel
 
-專案已附 `vercel.json`，使用 Next.js 框架、`npm run build`、輸出目錄 `out`。
+專案已附 `vercel.json`，以靜態網站部署（`framework: null`，因為 `output: 'export'` 不會產生 Next.js 框架預設所需的 `routes-manifest.json`）、`npm run build`、輸出目錄 `out`。
 
 1. 將此資料夾提交到你的 Git 儲存庫，在 Vercel 匯入專案；若是 monorepo，Root Directory 指向此資料夾。
 2. 在 Vercel 的 Environment Variables 設定 `.env.example` 中的值。
@@ -76,7 +76,7 @@ npx vercel login
 npx vercel --prod
 ```
 
-此專案不需要 runtime 環境變數、Serverless Functions、資料庫或後端。首次部署若出現設定提示，選 Next.js，Build Command 為 `npm run build`，Output Directory 為 `out`。
+此專案不需要 runtime 環境變數、Serverless Functions、資料庫或後端。首次部署若出現設定提示，Framework 選 Other，Build Command 為 `npm run build`，Output Directory 為 `out`。
 
 ## 驗收
 
