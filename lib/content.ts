@@ -1,6 +1,6 @@
 // 上線前請以實際可提供、經確認的條件替換所有大括號佔位資料。
 export const content = {
-  brand: '借貸諮詢',
+  brand: '順心借',
   amount: '{額度}',
   annualRate: '{年利率區間}',
   terms: '{期數}',

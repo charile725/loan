@@ -4,7 +4,7 @@
   <path d="M0 620h1200" stroke="#eb4b35" stroke-width="20"/>
   <g transform="translate(82 65) scale(1.05)" fill="none" stroke="#ba985b" stroke-width="3"><path d="M24 3 44 14v23L24 49 4 37V14L24 3Z"/><path d="m13 28.5 8 7.5 15-18" stroke-width="3.5"/></g>
   <g font-family="Microsoft JhengHei, PingFang TC, Noto Sans TC, sans-serif">
-    <text x="152" y="100" fill="#fff" font-size="31" font-weight="700" letter-spacing="4">借貸諮詢</text>
+    <text x="152" y="100" fill="#fff" font-size="31" font-weight="700" letter-spacing="4">順心借</text>
     <text x="84" y="257" fill="#fff" font-size="69" font-weight="700">資金的難題，</text>
     <text x="84" y="361" fill="#fff" font-size="69" font-weight="700">用<tspan fill="#ff7058">安心</tspan>找到解答。</text>
     <path d="M86 419h54" stroke="#ba985b" stroke-width="3"/>

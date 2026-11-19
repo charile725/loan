@@ -1,4 +1,4 @@
-# 借貸諮詢 Landing Page
+# 順心借 Landing Page
 
 Next.js App Router、TypeScript、Tailwind CSS。全站靜態輸出至 `out/`；無 API、資料庫、表單或檔案上傳。新專案位於 `/srv/loan-consultation`，與既有 `/srv/website` 獨立。
 
@@ -44,7 +44,7 @@ npm run typecheck
 | `lib/content.ts` | `{姓名或名稱}`：實際放款人姓名或名稱，會同步更新資訊區及頁尾 |
 | `lib/content.ts` | `{聯絡電話}`：實際服務電話；填入後，頂部資訊列、聯絡區與桌機浮動入口會自動顯示撥號連結 |
 | `lib/content.ts` | `{服務時間}`：服務日期、時間與時區 |
-| `lib/content.ts` / `app/layout.tsx` / `public/og.png` | 如需品牌名稱，將通用的「借貸諮詢」同步替換 |
+| `lib/content.ts` / `app/layout.tsx` / `public/og.svg` + `public/og.png` | 品牌名稱目前為「順心借」；如需更改，同步替換這幾處（`og.png` 需由 `og.svg` 重新輸出） |
 | `components/service-explorer.tsx` / `app/page.tsx` | 確認四項資金諮詢情境，以及條件說明入口與實際服務相符 |
 | `app/page.tsx` | 如有確定的撥款、提前清償條件，更新 FAQ |
 | `app/layout.tsx` | 確認所有資料可公開後，將 `robots` 的 `index`、`follow` 改為 `true` |
