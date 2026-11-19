@@ -15,11 +15,19 @@ npm run build
 npm run typecheck
 ```
 
-首頁採用暖金識別、珊瑚紅與深灰色系，包含商務照片主視覺、服務原則、關於我們、五個諮詢入口、申辦流程、方案條件、FAQ 及聯絡區。`public/images/` 的情境照片儲存於本機，並非實際門市照片。圖片使用原生 `img`，不依賴圖片處理伺服器，無外部字型或動畫套件。
+首頁保留暖金識別與珊瑚紅，搭配白色、冷灰及深綠灰底色。分欄主視覺後依序呈現服務原則、四類服務切換、關於我們、申辦流程、方案條件、FAQ 及聯絡區。`public/images/` 的情境照片儲存於本機，並非實際門市照片。圖片使用原生 `img`，不依賴圖片處理伺服器，無外部字型或動畫套件。
+
+### UI 設計參考
+
+- [SoFi 個人貸款](https://www.sofi.com/personal-loans/)：參考清楚的主行動入口與貸款用途分類。
+- [Happen 個人貸款（原 LendingClub 網址轉址）](https://www.happen.com/personal-loan)：參考依使用目標分組的服務內容與流程說明。
+- [台新 Richart 信用貸款](https://richart.tw/TSDIB_RichartWeb/loan/all-personal-loan)：參考條件、步驟與 FAQ 的資訊分區。
+
+本次調整保留既有品牌、LINE 連結與追蹤邏輯，採用獨立的版面設計；利率、額度、時效等條件仍使用本站已確認的資料，未套用參考網站的產品數字。
 
 情境照片來源：Unsplash 圖片 [商務文件](https://images.unsplash.com/photo-1450101499163-c8848c66ca85)、[辦公空間](https://images.unsplash.com/photo-1497366754035-f200968a6e72)。品牌標記與分享預覽圖為專案內的 SVG 資產。
 
-FAQ 使用原生 details/summary，支援鍵盤且一次展開一題。手機導覽可按 Escape 關閉；固定底部提供申辦流程與諮詢入口，預留 safe area 與頁尾空間。版面支援 320px 至大型桌機，並遵循減少動態效果的系統設定。
+服務切換使用具備 tab / tabpanel 語意的按鈕，支援左右方向鍵及 Home / End 鍵，分別呈現適用情境、討論項目與諮詢前準備。FAQ 使用原生 details/summary，預設展開第一題，一次展開一題。導覽隨捲動標示目前章節；手機選單支援 Escape、背景關閉與焦點循環，開啟時鎖定背景捲動，切回桌機時自動關閉。手機底部提供申辦流程與諮詢入口，預留 safe area 與頁尾空間。版面支援 320px 至大型桌機，並遵循減少動態效果的系統設定。
 
 ## 上線前替換清單
 
@@ -37,7 +45,7 @@ FAQ 使用原生 details/summary，支援鍵盤且一次展開一題。手機導
 | `lib/content.ts` | `{聯絡電話}`：實際服務電話；填入後，頂部資訊列、聯絡區與桌機浮動入口會自動顯示撥號連結 |
 | `lib/content.ts` | `{服務時間}`：服務日期、時間與時區 |
 | `lib/content.ts` / `app/layout.tsx` / `public/og.png` | 如需品牌名稱，將通用的「借貸諮詢」同步替換 |
-| `app/page.tsx` | 確認四項資金諮詢情境，以及條件說明入口與實際服務相符 |
+| `components/service-explorer.tsx` / `app/page.tsx` | 確認四項資金諮詢情境，以及條件說明入口與實際服務相符 |
 | `app/page.tsx` | 如有確定的撥款、提前清償條件，更新 FAQ |
 | `app/layout.tsx` | 確認所有資料可公開後，將 `robots` 的 `index`、`follow` 改為 `true` |
 
@@ -45,7 +53,7 @@ FAQ 使用原生 details/summary，支援鍵盤且一次展開一題。手機導
 
 ## LINE 與追蹤
 
-LINE 按鈕位置包括 `hero`、`banner`、`sticky`、`footer`。頁首「立即諮詢」連至聯絡區；僅設定正式 LINE ID 後的出站點擊會記錄：
+LINE 按鈕位置包括 `hero`、`sticky`、`footer`。頁首「免費諮詢」連至聯絡區；僅設定正式 LINE ID 後的出站點擊會記錄：
 
 - GA4：`gtag('event', 'line_click', { position, transport_type: 'beacon' })`
 - Meta：`fbq('trackCustom', 'line_click', { position })`
@@ -80,7 +88,7 @@ npx vercel --prod
 
 ## 驗收
 
-- 手機 390px、桌機 1280px：檢查無水平溢出、固定 CTA 不遮住頁尾、鍵盤可展開 FAQ。
+- 手機 320px / 390px、平板 768px、桌機 1280px / 1440px：檢查無水平溢出、固定 CTA 不遮住頁尾、鍵盤可切換服務與展開 FAQ。
 - 以帶 UTM 的網址開啟，確認所有 LINE 按鈕保留參數。
 - 未設定追蹤 ID 時，Network 不應請求 Google / Meta；設定後用 GA DebugView 與 Meta Test Events 檢查 `line_click` 與 `position`。
 - 對正式部署網址執行 Lighthouse Mobile，效能目標 90+。實際分數須依上線環境及是否啟用第三方追蹤實測，不保證分數。
