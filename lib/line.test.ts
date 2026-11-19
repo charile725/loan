@@ -1,6 +1,12 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { buildLineUrl } from './line.ts';
+import { buildLineUrl, lineHref } from './line.ts';
+test('uses official LINE short links as-is and treats placeholders as unset', () => {
+  assert.equal(lineHref('https://lin.ee/7kz8o2n', '?utm_source=facebook'), 'https://lin.ee/7kz8o2n');
+  assert.equal(new URL(lineHref(' @test ', '?utm_source=a')!).searchParams.get('utm_source'), 'a');
+  for (const unset of ['', '  ', '@LINE_ID', '{LINE 官方帳號連結}']) assert.equal(lineHref(unset), null);
+  assert.equal(new URL(lineHref('https://evil.example/x')!).origin, 'https://line.me');
+});
 test('preserves UTM values and excludes other query parameters', () => {
   const url = new URL(buildLineUrl('@test', '?utm_source=社群&utm_campaign=A%26B&email=private&redirect=https://evil.example'));
   assert.equal(url.origin, 'https://line.me');

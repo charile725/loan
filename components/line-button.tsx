@@ -1,6 +1,7 @@
 ﻿'use client';
 import { useEffect, useState } from 'react';
-import { buildLineUrl } from '@/lib/line';
+import { lineHref } from '@/lib/line';
+import { content } from '@/lib/content';
 import { Icon } from '@/components/icons';
 type Position = 'header' | 'hero' | 'sticky' | 'footer' | 'banner';
 type Variant = 'solid' | 'light' | 'line' | 'floating';
@@ -13,10 +14,10 @@ declare global {
   }
 }
 export function LineButton({ position, size = 'md', className = '', variant = 'solid' }: { position: Position; size?: 'sm' | 'md'; className?: string; variant?: Variant }) {
-  const id = process.env.NEXT_PUBLIC_LINE_ID?.trim();
-  const configured = !!id && id !== '@LINE_ID';
-  const [href, setHref] = useState(configured ? buildLineUrl(id) : '#contact');
-  useEffect(() => { if (configured && id) setHref(buildLineUrl(id, window.location.search)); }, [configured, id]);
+  const base = lineHref(content.line);
+  const configured = base !== null;
+  const [href, setHref] = useState(base ?? '#contact');
+  useEffect(() => { const next = lineHref(content.line, window.location.search); if (next) setHref(next); }, []);
   function track() {
     if (!configured) return;
     if (process.env.NEXT_PUBLIC_GA_ID) window.gtag?.('event', 'line_click', { position, transport_type: 'beacon' });

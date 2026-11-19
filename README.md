@@ -33,10 +33,10 @@ npm run typecheck
 
 | 位置 | 待替換資料 |
 | --- | --- |
-| `.env.local` / Vercel 環境變數 | `NEXT_PUBLIC_LINE_ID=@LINE_ID`：完整官方 LINE ID，含 `@` |
-| 同上 | `NEXT_PUBLIC_SITE_URL=https://your-domain.example`：正式網址，含 https |
+| `.env.local` / Vercel 環境變數 | `NEXT_PUBLIC_SITE_URL=https://your-domain.example`：正式網址，含 https |
 | 同上（選填） | `NEXT_PUBLIC_GA_ID`：GA4 的 `G-...` ID |
 | 同上（選填） | `NEXT_PUBLIC_META_PIXEL_ID`：純數字 Meta Pixel ID |
+| `lib/content.ts` | `line`：LINE 官方帳號連結，目前為 `https://lin.ee/7kz8o2n`（@374sgygu）；也可填含 `@` 的 LINE ID |
 | `lib/content.ts` | `{額度}`：借款最低、最高金額及幣別 |
 | `lib/content.ts` | `{年利率區間}`：確認後的實際年利率區間 |
 | `lib/content.ts` | `{期數}`：可申辦的期數範圍與單位 |
@@ -49,18 +49,20 @@ npm run typecheck
 | `app/page.tsx` | 如有確定的撥款、提前清償條件，更新 FAQ |
 | `app/layout.tsx` | 確認所有資料可公開後，將 `robots` 的 `index`、`follow` 改為 `true` |
 
-目前佔位版本設為不索引，避免未確認的條件被搜尋引擎收錄。未填寫的方案條件以「依需求評估／諮詢時確認」等文字呈現；聯絡資訊顯示更新中，不會直接輸出大括號佔位資料。LINE ID 未設定或仍為 `@LINE_ID` 時，按鈕會導向站內聯絡區，不會開啟無效帳號；設定正式 ID 後會自動啟用 LINE 連結。所有公開環境變數會在建置時寫入前端，修改後需重新部署，不可放秘密金鑰。
+目前佔位版本設為不索引，避免未確認的條件被搜尋引擎收錄。未填寫的方案條件以「依需求評估／諮詢時確認」等文字呈現；聯絡資訊顯示更新中，不會直接輸出大括號佔位資料。`lib/content.ts` 的 `line` 留空或為佔位值時，按鈕會導向站內聯絡區，不會開啟無效帳號。所有公開環境變數會在建置時寫入前端，修改後需重新部署，不可放秘密金鑰。
 
 ## LINE 與追蹤
 
-LINE 按鈕位置包括 `hero`、`sticky`、`footer`。頁首「免費諮詢」連至聯絡區；僅設定正式 LINE ID 後的出站點擊會記錄：
+LINE 按鈕位置包括 `hero`、`sticky`、`footer`。頁首「免費諮詢」連至聯絡區；僅設定 LINE 連結後的出站點擊會記錄：
 
 - GA4：`gtag('event', 'line_click', { position, transport_type: 'beacon' })`
 - Meta：`fbq('trackCustom', 'line_click', { position })`
 
 未設定有效 ID 時，不載入對應第三方追蹤腳本。只追蹤頁面與按鈕事件，不實作資料填寫、進階比對或自動事件擷取。啟用第三方分析前，應確認自身隱私告知與適用的同意需求。預設兩者均停用。
 
-`lib/line.ts` 將目前網址上所有 `utm_*` 參數附加至官方 `https://line.me/R/ti/p/{ID}` 連結；其他參數不轉交。例如：
+目前使用 LINE 官方短網址 `https://lin.ee/7kz8o2n`，按鈕原樣開啟此網址。短網址轉址時會捨棄 `utm_*` 參數，改由 LINE 官方帳號後台以「網址」來源統計加好友數；網站端的渠道成效請看 GA4 的 `line_click`。
+
+若改填含 `@` 的 LINE ID，`lib/line.ts` 會將目前網址上所有 `utm_*` 參數附加至官方 `https://line.me/R/ti/p/{ID}` 連結；其他參數不轉交。例如：
 
 ```text
 /?utm_source=facebook&utm_campaign=consultation
