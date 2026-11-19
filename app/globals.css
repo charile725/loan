@@ -80,7 +80,10 @@ svg { flex-shrink: 0; }
 .hero h1 span { position: relative; z-index: 0; color: var(--coral); }
 .hero h1 span::after { position: absolute; right: 0; bottom: 1px; left: 0; z-index: -1; height: 9px; border-radius: 3px; background: #f4d9ce; content: ''; }
 .hero-description { max-width: 490px; margin: 24px 0 0; color: #626c71; font-size: 17px; line-height: 1.95; }
-.hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 30px; }
+.hero-actions { display: flex; margin-top: 30px; }
+.hero-actions .button { min-height: 56px; padding-inline: 30px; font-size: 17px; font-weight: 750; box-shadow: 0 6px 16px #07813b35; }
+.hero-actions .button:hover { box-shadow: 0 8px 20px #07813b50; }
+.hero-actions .button:focus-visible { outline: 2px solid #07813b; outline-offset: 4px; }
 .hero-note { display: flex; align-items: center; gap: 8px; margin: 16px 0 0; color: #6a7477; font-size: 13px; }
 .hero-note svg { color: var(--gold); }
 .hero-topics { display: flex; gap: 0; margin-top: 39px; color: #697478; font-size: 14px; }
@@ -290,8 +293,6 @@ summary::-webkit-details-marker { display: none; }
   .mobile-nav a:last-child { border-bottom: 0; }
   .hero-grid { gap: 30px; }
   .hero h1 { font-size: 40px; }
-  .hero-actions { gap: 10px; }
-  .hero-actions .button { padding-inline: 18px; font-size: 14px; }
   .hero-insight { gap: 12px; }
   .insight-icon { width: 40px; height: 44px; }
   .hero-insight div > span { font-size: 12px; }
@@ -393,7 +394,7 @@ summary::-webkit-details-marker { display: none; }
   .hero h1 span::after { height: 6px; }
   .hero-description { max-width: 440px; margin-top: 19px; font-size: 16px; line-height: 1.95; }
   .hero-actions { margin-top: 25px; }
-  .hero-actions .button { min-height: 50px; padding-inline: 18px; font-size: 15px; }
+  .hero-actions .button { padding-inline: 24px; font-size: 16px; }
   .hero-note { margin-top: 13px; font-size: 12px; }
   .hero-topics { display: none; }
   .hero-visual { height: 300px; margin: 0 0 15px 12px; border-radius: 9px; }
@@ -497,8 +498,6 @@ summary::-webkit-details-marker { display: none; }
   .header-cta { display: none; }
   .nav-toggle { margin-left: auto; }
   .hero h1 { font-size: 31px; }
-  .hero-actions { gap: 9px; }
-  .hero-actions .button { padding-inline: 13px; font-size: 14px; }
   .hero-visual { height: 265px; }
   .hero-insight { gap: 10px; padding: 16px 12px; }
   .hero-insight p { font-size: 13px; }

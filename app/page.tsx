@@ -48,7 +48,7 @@ export default function Home() {
             <Eyebrow>專業溝通，安心規劃</Eyebrow>
             <h1 id="hero-title">資金的難題，<br />從<span>安心</span>開始解答。</h1>
             <p className="hero-description">每一份需求，都值得被認真對待。<br />從看懂條件到理好規劃，陪你找到更踏實的下一步。</p>
-            <div className="hero-actions"><LineButton position="hero" /><a href="#needs" className="button button-outline">探索諮詢服務</a></div>
+            <div className="hero-actions"><LineButton position="hero" variant="line" /></div>
             <p className="hero-note"><Icon name="shield" className="icon-sm" />免費諮詢，充分了解後再決定</p>
             <div className="hero-topics" aria-label="諮詢項目"><span>個人週轉</span><span>還款整合</span><span>營運規劃</span></div>
           </div>
